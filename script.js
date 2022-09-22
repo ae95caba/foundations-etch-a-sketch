@@ -52,7 +52,7 @@ function randomNumber(){
 
 function randomColor (){
     
-   return`rgba(${randomNumber()},${randomNumber()}, ${randomNumber()},0.1)`;
+   return`rgb(${randomNumber()},${randomNumber()}, ${randomNumber()})`;
     
     
     
@@ -91,7 +91,7 @@ randomButton.addEventListener("click", rainbowGrid);
 
 const blackButton = document.querySelector("#black");
 
-function asdf  (a) {a.currentTarget.style.backgroundColor = "rgba(0,0,0,0.1)"; }
+function asdf  (a) {a.currentTarget.style.backgroundColor = "rgb(0,0,0)"; }
 
 function blackGrid(){
     callGridDivs.forEach(a => a.removeEventListener("mouseover",currentEvent )); 
@@ -105,7 +105,7 @@ blackButton.addEventListener("click",blackGrid);
 //grey scale 
 const greyButton = document.querySelector("#grey");
 
-function increaseOpacity (div) {
+function increaseOpacityTree (div) {
     if (div.style.backgroundColor.length < 13){
         return;
     }
@@ -125,10 +125,42 @@ function increaseOpacity (div) {
     
 }
 
+function increaseOpacity (div){
+    //alert(div.style.backgroundColor==="");
+    if(div.style.backgroundColor === ""){
+        //alert("estaba vacio")
+        div.style.backgroundColor= "rgba(0,0,0,0)";
+        var currentOpacity =  0;
+        console.log("if");
+       
+        
+        
+    }else if ( `${div.style.backgroundColor}`.match("rgba")){
+        console.log(div.style.backgroundColor.length)
+        
+        var currentOpacity =  Number(div.style.backgroundColor.slice(-4,-1));
+
+        console.log("else if");
+       
+    }else if(div.style.backgroundColor==="rgb(0, 0, 0)"){
+        return
+    }else{div.style.backgroundColor= "rgba(0,0,0,0)";
+    var currentOpacity =  0;};
+
+    let increasedOpacity = currentOpacity + 0.1;
+    console.log(div.style.backgroundColor)
+    div.style.backgroundColor= `rgba(0,0,0,${increasedOpacity})`;
+    console.log(div.style.backgroundColor)
+    //alert(div.style.backgroundColor);
+}
+
 function greyGrid (){
     //first, fist remove previous event
     
     callGridDivs.forEach(a => a.removeEventListener("mouseover",currentEvent )); 
+
+    //second, give rgba to the whole grid
+   // callGridDivs.forEach(a => a.style.backgroundColor="rgba(0,0,0,0)"); 
    
 
     //then, with each click to any div, that div should increase its opacity by 0,1
