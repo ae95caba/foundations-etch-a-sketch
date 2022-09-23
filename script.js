@@ -105,52 +105,32 @@ blackButton.addEventListener("click",blackGrid);
 //grey scale 
 const greyButton = document.querySelector("#grey");
 
-function increaseOpacityTree (div) {
-    if (div.style.backgroundColor.length < 13){
-        return;
-    }
-
-    
-    if(div.style.backgroundColor.length < 18){
-        var currentOpacity =  0;
-    }else{
-        var currentOpacity =  Number(div.style.backgroundColor.slice(-4,-1));};
-    
-  
-   
-    let increasedOpacity = currentOpacity + 0.1;
-   
-    div.style.backgroundColor= `rgba(0,0,0,${increasedOpacity})`;
-    
-    
-}
-
 function increaseOpacity (div){
     //alert(div.style.backgroundColor==="");
-    if(div.style.backgroundColor === ""){
+    if(div.currentTarget.style.backgroundColor === ""){
         //alert("estaba vacio")
-        div.style.backgroundColor= "rgba(0,0,0,0)";
+        div.currentTarget.style.backgroundColor= "rgba(0,0,0,0)";
         var currentOpacity =  0;
-        console.log("if");
+       // console.log("if");
        
         
         
-    }else if ( `${div.style.backgroundColor}`.match("rgba")){
-        console.log(div.style.backgroundColor.length)
+    }else if ( `${div.currentTarget.style.backgroundColor}`.match("rgba")){
+      //  console.log(div.style.backgroundColor.length)
         
-        var currentOpacity =  Number(div.style.backgroundColor.slice(-4,-1));
+        var currentOpacity =  Number(div.currentTarget.style.backgroundColor.slice(-4,-1));
 
         console.log("else if");
        
-    }else if(div.style.backgroundColor==="rgb(0, 0, 0)"){
+    }else if(div.currentTarget.style.backgroundColor==="rgb(0, 0, 0)"){
         return
-    }else{div.style.backgroundColor= "rgba(0,0,0,0)";
+    }else{div.currentTarget.style.backgroundColor= "rgba(0,0,0,0)";
     var currentOpacity =  0;};
 
     let increasedOpacity = currentOpacity + 0.1;
-    console.log(div.style.backgroundColor)
-    div.style.backgroundColor= `rgba(0,0,0,${increasedOpacity})`;
-    console.log(div.style.backgroundColor)
+    //console.log(div.style.backgroundColor)
+    div.currentTarget.style.backgroundColor= `rgba(0,0,0,${increasedOpacity})`;
+    //console.log(div.style.backgroundColor)
     //alert(div.style.backgroundColor);
 }
 
@@ -164,7 +144,9 @@ function greyGrid (){
    
 
     //then, with each click to any div, that div should increase its opacity by 0,1
-    callGridDivs.forEach(div => div.addEventListener("mouseover",()=>increaseOpacity(div)));
+    callGridDivs.forEach(div => div.addEventListener("mouseover",increaseOpacity));
+    currentEvent= increaseOpacity;
+    
 
 }
 

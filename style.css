@@ -6,17 +6,12 @@
 }
 
 
-.grid-div {
-    height: 60px;
-    width: 60px;
-   border: 1px solid red; 
-}
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(16,6.25%);
     grid-template-rows: repeat(16,6.25%);
-   
+    border: 1px solid red; 
     height: 960px;
     width: 960px;
     gap: 0px;
