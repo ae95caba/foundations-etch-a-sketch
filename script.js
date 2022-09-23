@@ -1,4 +1,5 @@
 
+
 const gridContainer = document.querySelector(".grid-container");
 var previousEvent ;
 var previousEventTargent ;
@@ -85,13 +86,18 @@ randomButton.addEventListener("click", rainbowGrid);
 
 
 
+
 // black button
 
 
 
 const blackButton = document.querySelector("#black");
 
-function asdf  (a) {a.currentTarget.style.backgroundColor = "rgb(0,0,0)"; }
+function asdf  (a) {
+    
+    a.currentTarget.style.backgroundColor = "rgb(0,0,0)";
+}
+
 
 function blackGrid(){
     callGridDivs.forEach(a => a.removeEventListener("mouseover",currentEvent )); 
@@ -152,16 +158,5 @@ function greyGrid (){
 
 greyButton.addEventListener("click",greyGrid);
 
-//let removeBlack = document.querySelector("#remove-black");
-
-//function asdfas () {
-//    callGridDivs.forEach(a => a.removeEventListener("mouseover",asdf ));
-//    console.log("eusoulobo");
-//}
-
-//removeBlack.addEventListener("click",asdfas);
 
 
-
-//// que haggooo
-/// hacer
